@@ -1,4 +1,7 @@
+
 const { useState } = React;
+// Importa el botón de limpiar
+import ClearButton from './ClearButton.jsx';
 
 function App() {
     const [a, setA] = useState('');
@@ -6,6 +9,15 @@ function App() {
     const [op, setOp] = useState('+');
     const [result, setResult] = useState(null);
     const [error, setError] = useState('');
+
+    // Función para limpiar todos los campos
+    const handleClear = () => {
+        setA('');
+        setB('');
+        setOp('+');
+        setResult(null);
+        setError('');
+    };
 
     const handleCalculate = async () => {
         setError('');
@@ -54,6 +66,8 @@ function App() {
                 style={{ width: '100%', marginBottom: 10 }}
             />
             <button onClick={handleCalculate} style={{ width: '100%', marginBottom: 10 }}>Calcular</button>
+            {/* Botón para limpiar todo */}
+            <ClearButton onClear={handleClear} />
             {result !== null && <div>Resultado: <strong>{result}</strong></div>}
             {error && <div style={{ color: 'red' }}>{error}</div>}
         </div>
