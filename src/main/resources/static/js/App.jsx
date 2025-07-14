@@ -1,7 +1,11 @@
-
 const { useState } = React;
-// Importa el botón de limpiar
-import ClearButton from './ClearButton.jsx';
+
+// Componente de botón de limpiar dentro de App.jsx
+function ClearButton({ onClear }) {
+    return (
+        <button onClick={onClear} style={{ width: '100%', marginBottom: 10, background: '#eee' }}>Limpiar</button>
+    );
+}
 
 function App() {
     const [a, setA] = useState('');
